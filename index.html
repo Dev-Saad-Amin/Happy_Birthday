@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- ✅ ADD THIS LINE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Romantic Birthday</title>
 
 <style>
@@ -40,6 +44,19 @@ canvas {
   from { transform: translateY(100vh); }
   to { transform: translateY(-10vh); }
 }
+
+/* ✅ MOBILE RESPONSIVE ONLY */
+@media (max-width: 600px) {
+  .text {
+    font-size: 22px;
+    top: 35%;
+    padding: 0 10px;
+  }
+
+  .heart-bg {
+    font-size: 16px;
+  }
+}
 </style>
 
 </head>
@@ -55,7 +72,7 @@ canvas {
 </div>
 
 <script>
-// ===== MAIN HEART =====
+// (JS SAME — NO CHANGE)
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -85,7 +102,6 @@ for (let i = 0; i < 1200; i++) {
   });
 }
 
-// ===== FIREWORKS =====
 const fireCanvas = document.getElementById("fireCanvas");
 const fctx = fireCanvas.getContext("2d");
 
@@ -129,7 +145,6 @@ function drawFireworks() {
   requestAnimationFrame(drawFireworks);
 }
 
-// ===== FLOATING HEARTS =====
 function createFloatingHearts() {
   for (let i = 0; i < 20; i++) {
     let h = document.createElement("div");
@@ -141,7 +156,6 @@ function createFloatingHearts() {
   }
 }
 
-// ===== DRAW HEART =====
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -168,14 +182,10 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-// ===== INIT =====
 createFloatingHearts();
 draw();
 drawFireworks();
-
-// repeat fireworks
 setInterval(createFirework, 1200);
-
 </script>
 
 </body>
