@@ -6,7 +6,7 @@
 <!-- ✅ ADD THIS LINE -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Romantic Birthday</title>
+<title>Happy Birthday Barbie</title>
 
 <style>
 body {
@@ -70,7 +70,7 @@ canvas {
 <canvas id="heartCanvas"></canvas>
 <canvas id="fireCanvas"></canvas>
 
-<div class="text" id="msg" style="padding: 10px 0 0 0 ; font-size: 26px; font-weight: bold;">🎉 Happy Birthday 🎉 <br>
+<div class="text" id="msg" style="padding: 10px 0 0 0 ; font-size: 26px; font-weight: bold;">🎂 Happy Birthday 🎂 <br>
   <span style="color:#ff4d6d;">💖Barbie💖 M B W💖</span>
   <p style="font-size: 17px;">✨You are my <span style="color: #ff4d6d;">precious </span><br><span style="color: #ff4d6d;">person</span> of my life💫 </p>
 </div>
@@ -196,10 +196,13 @@ setInterval(createFirework, 1200);
 window.addEventListener("load", () => {
   const audio = document.getElementById("bgMusic");
 
-  // try autoplay
-  audio.play().catch(() => {
-    // agar block ho jaye to click pe play
+  audio.play().then(() => {
+    // autoplay mil gaya → ab unmute kar do
+    audio.muted = false;
+  }).catch(() => {
+    // fallback: click pe play
     document.body.addEventListener("click", () => {
+      audio.muted = false;
       audio.play();
     }, { once: true });
   });
