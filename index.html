@@ -61,6 +61,11 @@ canvas {
 
 </head>
 <body>
+  <div>
+<audio id="bgMusic" loop>
+  <source src="./audio.mp3" type="audio/mpeg">
+</audio>
+  </div>
 
 <canvas id="heartCanvas"></canvas>
 <canvas id="fireCanvas"></canvas>
@@ -185,6 +190,20 @@ createFloatingHearts();
 draw();
 drawFireworks();
 setInterval(createFirework, 1200);
+
+</script>
+<script>
+window.addEventListener("load", () => {
+  const audio = document.getElementById("bgMusic");
+
+  // try autoplay
+  audio.play().catch(() => {
+    // agar block ho jaye to click pe play
+    document.body.addEventListener("click", () => {
+      audio.play();
+    }, { once: true });
+  });
+});
 </script>
 
 </body>
